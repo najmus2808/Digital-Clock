@@ -1,0 +1,11 @@
+Live Link : 
+
+Author: Najmus Sakib 
+
+How I implemented the JavaScript functionality: I created a clock using JavaScript that displays the current time in 12-hour format with AM or PM.
+
+To start, I selected the clock element from the HTML using document.querySelector(). Next, I defined a function called updateClock() that retrieves the current time using new Date(), and then extracts the hours, minutes, and seconds. I converted the hours to 12-hour format, added leading zeros to the minutes and seconds, and formatted the time as a string with the AM/PM period.
+
+The updateClock() function then sets the text content of the clock element to the time string using clock.textContent. I created another function called padZeroes() which adds leading zeros to the minutes and seconds if they are less than 10.
+
+Finally, I called the updateClock() function to initialize the clock with the current time. To keep the clock updated with the current time, I used setInterval() to call updateClock() every second.

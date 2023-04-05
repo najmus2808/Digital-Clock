@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital Clock</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="clock"></div>
+
+    <script>
+      // get the clock element from the HTML
+      const clock = document.querySelector(".clock");
+
+      // function to update the clock every second
+      function updateClock() {
+        // get the current time
+        const currentTime = new Date();
+
+        // extract hours, minutes, and seconds
+        let hours = currentTime.getHours();
+        let minutes = currentTime.getMinutes();
+        let seconds = currentTime.getSeconds();
+
+        // convert to 12-hour format and add leading zeros
+        let period = hours >= 12 ? "PM" : "AM";
+        hours = hours % 12 || 12;
+        minutes = padZeroes(minutes);
+        seconds = padZeroes(seconds);
+
+        // format the time as a string
+        const timeString = `${hours}:${minutes}:${seconds} ${period}`;
+
+        // display the time in the clock element
+        clock.textContent = timeString;
+      }
+
+      // function to add leading zeros to a number
+      function padZeroes(num) {
+        return num < 10 ? "0" + num : num;
+      }
+
+      // initialize the clock
+      updateClock();
+
+      // update the clock every second using setInterval()
+      setInterval(updateClock, 1000);
+    </script>
+  </body>
+</html>
+
+<!-- How I implemented the JavaScript functionality: I created a clock using JavaScript that displays the current time in 12-hour format with AM or PM.
+
+To start, I selected the clock element from the HTML using document.querySelector(). Next, I defined a function called updateClock() that retrieves the current time using new Date(), and then extracts the hours, minutes, and seconds. I converted the hours to 12-hour format, added leading zeros to the minutes and seconds, and formatted the time as a string with the AM/PM period.
+
+The updateClock() function then sets the text content of the clock element to the time string using clock.textContent. I created another function called padZeroes() which adds leading zeros to the minutes and seconds if they are less than 10.
+
+Finally, I called the updateClock() function to initialize the clock with the current time. To keep the clock updated with the current time, I used setInterval() to call updateClock() every second. -->
